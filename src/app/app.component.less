@@ -1,0 +1,53 @@
+.app{
+    position: relative;
+    padding: 10%;
+    padding-top: 5%;
+}
+
+.todoApp{
+    background: repeating-linear-gradient(90deg, #ffa070bb 0, #ffa070bb 5%, transparent 0, transparent 50%), repeating-linear-gradient(180deg, #ffa070bb 0, #ffa070bb 5%, transparent 0, transparent 50%);
+        background-size: 3em 3em;
+        background-color: #ffffff;
+        background-position: center;
+        border: 5px solid #ff7d3c;
+        border-radius: 20px;
+
+        height: 100vh;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    font-size: 30px;
+    
+    .title{
+        font-family: Georgia, serif;
+    }
+
+    .leaf{
+       padding-right: 5px;
+    }
+
+    .apple{
+        padding-left: 5px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        padding-top: 30px; /* Adjust padding for mobile */
+        font-size: 13px; /* Adjust font size for mobile */
+        text-align: center;
+    }
+    .leaf{
+        padding-right: 0px;
+        padding-left: 6px;
+     }
+ 
+     .apple{
+         padding-left: 0px;
+         padding-right: 6px;
+     }
+}

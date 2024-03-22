@@ -1,12 +1,14 @@
 .todo{
     display: flex;
     padding: 10px;
-    background: #FFFF;
+    background: #ffffffdc;
     border-bottom: 1px solid #DDDD;
+    border-radius: 10px;
+    margin-bottom: 7px;  
 }
 
 .todo:nth-child(even){
-    background: grey;
+    background: rgba(255, 130, 57, 0.884);
 }
 
 .todo:last-of-type{
@@ -19,6 +21,8 @@
 
 .todo .content{
     flex: 1 1 100%;
+    font-family: Georgia, serif; 
+    font-size: large;
 }
 
 .todo.done .content{
@@ -34,7 +38,11 @@
     background-color: #f3f3f3;
     margin-top: 15px;
     font-size: 20px;
-    outline: none
+    outline: none;
+
+    font-family: Georgia, serif; 
+    background-color: rgba(255, 185, 145, 0.616);
+    color: rgb(0, 0, 0);
 }
 
 .todo-submit{
@@ -45,8 +53,32 @@
     border: none;
     outline: none;
     background: none;
-    background-color: green;
+    background-color: rgb(255, 130, 57);
+    text-transform: uppercase;
+    font-size: larger;
     color: #FFFF;
     margin: 15px auto;
     padding: 10px 15px;
+    font-family: Georgia, serif;
 }
+
+.todosApp{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 83%; 
+}
+
+.delete{
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ff7043; 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

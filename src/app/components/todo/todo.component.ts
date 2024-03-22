@@ -24,6 +24,46 @@ export class TodoComponent {
         content: 'second task',
         completed: true
       },
+      {
+        content: 'third task',
+        completed: true
+      },
+      {
+        content: 'fourth task',
+        completed: true
+      },
+      {
+        content: 'overflow task',
+        completed: true
+      },
+      {
+        content: 'overflow task',
+        completed: false
+      },
+      {
+        content: 'overflow task',
+        completed: false
+      },
+      {
+        content: 'overflow task',
+        completed: true
+      },
+      {
+        content: 'overflow task',
+        completed: false
+      },
+      {
+        content: 'overflow task',
+        completed: true
+      },
+      {
+        content: 'overflow task',
+        completed: false
+      },
+      {
+        content: 'overflow task',
+        completed: true
+      },
     ]
   }
 
