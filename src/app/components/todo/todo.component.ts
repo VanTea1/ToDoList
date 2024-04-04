@@ -10,6 +10,8 @@ export class TodoComponent {
 
   todos!: Todo[];
   inputTodo: string = "";
+  isVisibleEdit: boolean[] = []
+
   constructor(){
 
   }
@@ -64,7 +66,13 @@ export class TodoComponent {
         content: 'overflow task',
         completed: true
       },
-    ]
+    ],
+      this.isVisibleEdit = this.todos.map(() => false);
+  }
+
+
+  toggleEdit(i: number) {
+    this.isVisibleEdit[i] = !this.isVisibleEdit[i];
   }
 
   toggleDone(id: number){
