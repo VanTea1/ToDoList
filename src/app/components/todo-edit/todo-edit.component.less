@@ -2,4 +2,20 @@
     flex: 1 1 100%;
     font-family: Georgia, serif;
     font-size: large;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border:rgb(255, 130, 57) solid 2px;
+    border-radius: 6px;
+    width: 100%;
+    
+        @keyframes pulse {
+    
+            0%,
+            100% {
+                opacity: 1;
+            }
+    
+            40% {
+                opacity: .5;
+            }
+        }
 }
