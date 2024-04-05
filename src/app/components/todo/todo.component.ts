@@ -100,4 +100,7 @@ export class TodoComponent {
     this.inputTodo = "";
   }
 
+  delFinishedTodos(){
+    this.todos = this.todos.filter(todo => !todo.completed);
+  }
 }

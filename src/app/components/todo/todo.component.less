@@ -45,9 +45,19 @@
     color: rgb(0, 0, 0);
 }
 
+.input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px; 
+  }
+
 .todo-submit{
-    display:block;
+    display: inline-block;
+    position: relative;
     width: 100%;
+    height: 70px;
     max-width: 200px;
     appearance: none;
     border: none;
@@ -57,7 +67,31 @@
     text-transform: uppercase;
     font-size: larger;
     color: #FFFF;
-    margin: 15px auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-right: 35px;
+    padding: 10px 15px;
+    font-family: Georgia, serif;
+
+}
+
+.del-Finished-Todos{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    max-width: 200px;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    background-color: rgb(255, 130, 57);
+    text-transform: uppercase;
+    font-size: larger;
+    color: #FFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 35px;
     padding: 10px 15px;
     font-family: Georgia, serif;
 }
@@ -91,5 +125,106 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 5px;
+
     margin-left: 5px;
+
+}
+
+
+@media (max-width: 1024px) {
+
+    .todo-submit{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 70px;
+        max-width: 200px;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+        background-color: rgb(255, 130, 57);
+        text-transform: uppercase;
+        font-size: larger;
+        color: #FFFF;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-right: 35px;
+        padding: 10px 15px;
+        font-family: Georgia, serif;
+        font-size: 16px;
+    
+    }
+    
+    .del-Finished-Todos{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 70px;
+        max-width: 200px;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+        background-color: rgb(255, 130, 57);
+        text-transform: uppercase;
+        font-size: larger;
+        color: #FFFF;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 35px;
+        padding: 10px 15px;
+        font-family: Georgia, serif;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .todo-submit{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 70px;
+        max-width: 200px;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+        background-color: rgb(255, 130, 57);
+        text-transform: uppercase;
+        font-size: larger;
+        color: #FFFF;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-right: 15px;
+        padding: 10px 15px;
+        font-family: Georgia, serif;
+        font-size: 15px;
+    }
+    
+    .del-Finished-Todos{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 70px;
+        max-width: 200px;
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
+        background-color: rgb(255, 130, 57);
+        text-transform: uppercase;
+        font-size: larger;
+        color: #FFFF;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 15px;
+        padding: 10px 15px;
+        font-family: Georgia, serif;
+        font-size: 15px;
+    }
+
+
 }

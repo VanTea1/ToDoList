@@ -1,26 +1,17 @@
 <div class="todosApp">
   <div class="todos">
     <form (submit)="addTodo()">
-      <input
-        type="text"
-        name="inputTodo"
-        placeholder="Enter your Todos"
-        class="todo-input"
-        [(ngModel)]="inputTodo"
-      />
-      <input type="submit" value="Add Todo" class="todo-submit" />
+      <input type="text" name="inputTodo" placeholder="Enter your Todos" class="todo-input" [(ngModel)]="inputTodo" />
+      <div class="input-container">
+        <input type="submit" value="Add Todo" class="todo-submit" />
+
+        <button class="del-Finished-Todos" (click)="delFinishedTodos()">Delete finished ToDos</button>
+      </div>
     </form>
   </div>
-  <div
-    *ngFor="let todo of todos; let i = index"
-    class="todo {{ todo.completed ? 'done' : '' }}"
-  >
+  <div *ngFor="let todo of todos; let i = index" class="todo {{ todo.completed ? 'done' : '' }}">
     <div class="id">{{ i + 1 }}</div>
-    <app-todo-edit
-      class="content"
-      *ngIf="isVisibleEdit[i]"
-      [(value)]="todo.content"
-    ></app-todo-edit>
+    <app-todo-edit class="content" *ngIf="isVisibleEdit[i]" [(value)]="todo.content"></app-todo-edit>
     <div *ngIf="!isVisibleEdit[i]" class="content" (click)="toggleDone(i)">
       {{ todo.content }}
     </div>
