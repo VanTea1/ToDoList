@@ -1,5 +1,7 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/local-storage.service';
 import { Todo } from 'src/app/models/todos';
 import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.service';
 
@@ -11,19 +13,19 @@ import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.serv
 export class TodoComponent {
 
   todos!: Todo[];
-  inputTodo: string = "";
-  isVisibleEdit: boolean[] = []
+  
+  archivedTodosForInit: Todo[] = [
+    {
+      content: 'archived first task',
+      completed: false
+    },
+    {
+      content: 'archived second task',
+      completed: true
+    }
+  ];
 
-
-  archivedTodos: any[] = [];
-
-
-  constructor(private router: Router, private archiveService: TodoArchiveTransportService) {
-
-  }
-
-  ngOnInit(): void {
-    this.todos = [
+    todosForInit : Todo[]= [
       {
         content: 'first task',
         completed: false
@@ -72,7 +74,27 @@ export class TodoComponent {
         content: 'overflow task',
         completed: true
       },
-    ],
+    ];
+  inputTodo: string = "";
+  isVisibleEdit: boolean[] = []
+
+
+  archivedTodos: any[] = [];
+
+
+  constructor(private router: Router, private archiveService: TodoArchiveTransportService, private localStorageService: LocalStorageService) {
+
+  }
+
+  ngOnInit(): void {
+    if (!this.localStorageService.getData('todos')) {
+   this.localStorageService.saveData('todos', this.todosForInit);
+    this.localStorageService.saveData('arch', this.archivedTodosForInit);
+    }
+ 
+    this.todos = this.localStorageService.getData('todos');
+    this.archivedTodos = this.localStorageService.getData('arch');
+
       this.isVisibleEdit = this.todos.map(() => false);
   }
 
@@ -84,9 +106,9 @@ export class TodoComponent {
   toggleDone(id: number) {
     this.todos.map((v, i) => {
       if (i == id) v.completed = !v.completed;
-
       return v;
     })
+    this.localStorageService.saveData('todos', this.todos)
   }
 
 
@@ -99,10 +121,12 @@ export class TodoComponent {
 
     }
     this.inputTodo = "";
+    this.localStorageService.saveData('todos', this.todos)
   }
 
   delFinishedTodos() {
     this.todos = this.todos.filter(todo => !todo.completed);
+    this.localStorageService.saveData('todos', this.todos);
   }
 
   archiveTodo(id: number) {
@@ -111,6 +135,8 @@ export class TodoComponent {
     this.todos.splice(id, 1);
 
     this.archiveService.setArchive(this.archivedTodos);
+    this.localStorageService.saveData('todos', this.todos);
+    this.localStorageService.saveData('arch', this.archivedTodos);
   }
 
   routeArchive(){
