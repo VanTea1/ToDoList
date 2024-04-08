@@ -45,12 +45,15 @@
     color: rgb(0, 0, 0);
 }
 
+
+
 .input-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-bottom: 15px; 
+    gap: 30px;
   }
 
 .todo-submit{
@@ -69,7 +72,6 @@
     color: #FFFF;
     margin-bottom: 30px;
     margin-top: 30px;
-    margin-right: 35px;
     padding: 10px 15px;
     font-family: Georgia, serif;
 
@@ -91,7 +93,26 @@
     color: #FFFF;
     margin-top: 30px;
     margin-bottom: 30px;
-    margin-left: 35px;
+    padding: 10px 15px;
+    font-family: Georgia, serif;
+}
+
+.routeArchive{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    max-width: 200px;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    background-color: rgb(255, 130, 57);
+    text-transform: uppercase;
+    font-size: larger;
+    color: #FFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding: 10px 15px;
     font-family: Georgia, serif;
 }
@@ -104,7 +125,7 @@
     max-height: 80vh; 
 }
 
-.delete{
+.archive{
     display: inline-block;
     padding: 5px 10px;
     background-color: #ff7043; 

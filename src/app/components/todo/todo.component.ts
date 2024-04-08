@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from 'src/app/models/todos';
+import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.service';
 
 @Component({
   selector: 'app-todo',
@@ -12,7 +14,11 @@ export class TodoComponent {
   inputTodo: string = "";
   isVisibleEdit: boolean[] = []
 
-  constructor(){
+
+  archivedTodos: any[] = [];
+
+
+  constructor(private router: Router, private archiveService: TodoArchiveTransportService) {
 
   }
 
@@ -75,32 +81,39 @@ export class TodoComponent {
     this.isVisibleEdit[i] = !this.isVisibleEdit[i];
   }
 
-  toggleDone(id: number){
+  toggleDone(id: number) {
     this.todos.map((v, i) => {
-      if(i == id) v.completed = !v.completed;
+      if (i == id) v.completed = !v.completed;
 
       return v;
     })
   }
 
-  deleteTodo(id:number){
-    this.todos = this.todos.filter((v, i) => i !== id);
 
-  }
-
-  addTodo(){
-    if(this.inputTodo != "")
-    {
+  addTodo() {
+    if (this.inputTodo != "") {
       this.todos.push({
         content: this.inputTodo,
         completed: false
       })
-  
+
     }
     this.inputTodo = "";
   }
 
-  delFinishedTodos(){
+  delFinishedTodos() {
     this.todos = this.todos.filter(todo => !todo.completed);
+  }
+
+  archiveTodo(id: number) {
+    const archivedTodo = this.todos[id];
+    this.archivedTodos.push(archivedTodo);
+    this.todos.splice(id, 1);
+
+    this.archiveService.setArchive(this.archivedTodos);
+  }
+
+  routeArchive(){
+    this.router.navigate(['/archive']);  
   }
 }

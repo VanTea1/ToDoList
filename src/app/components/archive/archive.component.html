@@ -1,0 +1,18 @@
+<div class="todosApp">
+    <div class="todos">
+     
+        <div class="input-container">
+  
+          <button class="routeTodo" (click)="routeTodo()">Go back to the Todos</button>
+        </div>
+
+    </div>
+
+    <div *ngFor="let todo of archivedData; let i = index" class="todo {{ todo.completed ? 'done' : '' }}">
+        <div  class="content">
+          {{ todo.content }}
+        </div>
+
+        <button class="delete" (click)="deleteTodo(i)">X</button>
+      </div>
+  </div>

@@ -6,6 +6,8 @@
         <input type="submit" value="Add Todo" class="todo-submit" />
 
         <button class="del-Finished-Todos" (click)="delFinishedTodos()">Delete finished ToDos</button>
+
+        <button class="routeArchive" (click)="routeArchive()">Go to the Archive</button>
       </div>
     </form>
   </div>
@@ -18,6 +20,6 @@
     <button class="edit" (click)="toggleEdit(i)">
       {{ isVisibleEdit[i] ? "OK" : "Edit" }}
     </button>
-    <button class="delete" (click)="deleteTodo(i)">X</button>
+    <button class="archive" (click)="archiveTodo(i)">Archive</button>
   </div>
 </div>
