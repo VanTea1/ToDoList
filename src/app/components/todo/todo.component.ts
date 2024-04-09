@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/local-storage.service';
 import { Todo } from 'src/app/models/todos';
-import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.service';
 
 @Component({
   selector: 'app-todo',
@@ -83,7 +82,7 @@ export class TodoComponent {
   archivedTodos: any[] = [];
 
 
-  constructor(private router: Router, private archiveService: TodoArchiveTransportService, private localStorageService: LocalStorageService) {
+  constructor(private router: Router, private localStorageService: LocalStorageService) {
 
   }
 
@@ -138,7 +137,6 @@ export class TodoComponent {
         this.archivedTodos.push(archivedTodo);
         this.todos.splice(id, 1);
     
-        this.archiveService.setArchive(this.archivedTodos);
         this.localStorageService.saveData('todos', this.todos);
         this.localStorageService.saveData('arch', this.archivedTodos);
       }
