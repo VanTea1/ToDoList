@@ -13,6 +13,7 @@ import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.serv
 export class TodoComponent {
 
   todos!: Todo[];
+  isEdit : boolean = false;
   
   archivedTodosForInit: Todo[] = [
     {
@@ -100,6 +101,7 @@ export class TodoComponent {
 
 
   toggleEdit(i: number) {
+    this.isEdit = !this.isEdit;
     this.isVisibleEdit[i] = !this.isVisibleEdit[i];
   }
 
@@ -130,13 +132,16 @@ export class TodoComponent {
   }
 
   archiveTodo(id: number) {
-    const archivedTodo = this.todos[id];
-    this.archivedTodos.push(archivedTodo);
-    this.todos.splice(id, 1);
-
-    this.archiveService.setArchive(this.archivedTodos);
-    this.localStorageService.saveData('todos', this.todos);
-    this.localStorageService.saveData('arch', this.archivedTodos);
+    if(this.isEdit==false)
+      {
+        const archivedTodo = this.todos[id];
+        this.archivedTodos.push(archivedTodo);
+        this.todos.splice(id, 1);
+    
+        this.archiveService.setArchive(this.archivedTodos);
+        this.localStorageService.saveData('todos', this.todos);
+        this.localStorageService.saveData('arch', this.archivedTodos);
+      }
   }
 
   routeArchive(){
