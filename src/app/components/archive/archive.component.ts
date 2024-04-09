@@ -11,13 +11,14 @@ import { TodoArchiveTransportService } from 'src/app/todo-archive-transport.serv
 export class ArchiveComponent {
 
   archivedData: any[] = [];
+  todosData: any[] = [];
 
   constructor(private router: Router, private archiveService: TodoArchiveTransportService, private localStorageService:LocalStorageService) {
 
   }
 
   ngOnInit() {
-
+    this.todosData = this.localStorageService.getData('todos')
     this.archivedData = this.localStorageService.getData('arch');
   }
 
@@ -27,7 +28,14 @@ export class ArchiveComponent {
     this.archiveService.setArchive(this.archivedData);
      this.localStorageService.saveData('arch', this.archivedData);
   }
-
+  recoverTodo(id: number) {
+    const recoveredTodo = this.archivedData[id];
+    this.archivedData.splice(id, 1);
+    this.todosData.push(recoveredTodo);
+    
+        this.localStorageService.saveData('todos', this.todosData);
+        this.localStorageService.saveData('arch', this.archivedData);
+  }
 
   routeTodo() {
     this.router.navigate(['/todo']);
