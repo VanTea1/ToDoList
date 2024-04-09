@@ -1,6 +1,8 @@
 <div class="todosApp">
     <div class="todos">
-     
+      <div class="header">
+        <h1 class="title">ARCHIVE</h1>
+      </div>
         <div class="input-container">
   
           <button class="routeTodo" (click)="routeTodo()">Go back to the Todos</button>
@@ -9,6 +11,9 @@
     </div>
 
     <div *ngFor="let todo of archivedData; let i = index" class="todo {{ todo.completed ? 'done' : '' }}">
+      <div class="id">
+        {{i+1}}
+      </div>
         <div  class="content">
           {{ todo.content }}
         </div>
