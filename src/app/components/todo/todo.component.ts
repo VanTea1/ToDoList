@@ -25,7 +25,7 @@ export class TodoComponent {
     }
   ];
 
-    todosForInit : Todo[]= [
+  todosForInit : Todo[]= [
       {
         content: 'first task',
         completed: false
@@ -79,7 +79,7 @@ export class TodoComponent {
   isVisibleEdit: boolean[] = []
 
 
-  archivedTodos: any[] = [];
+  archivedTodos: Todo[] = [];
 
 
   constructor(private router: Router, private localStorageService: LocalStorageService) {

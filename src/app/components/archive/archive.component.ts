@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/local-storage.service';
+import { Todo } from 'src/app/models/todos';
 
 @Component({
   selector: 'app-archive',
@@ -9,8 +10,8 @@ import { LocalStorageService } from 'src/app/local-storage.service';
 })
 export class ArchiveComponent {
 
-  archivedData: any[] = [];
-  todosData: any[] = [];
+  archivedData: Todo[] = [];
+  todosData: Todo[] = [];
 
   constructor(private router: Router, private localStorageService:LocalStorageService) {
 
