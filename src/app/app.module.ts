@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { SvgComponent } from './components/svg/svg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     TodoEditComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    SvgComponent
   ],
   imports: [
     BrowserModule,
