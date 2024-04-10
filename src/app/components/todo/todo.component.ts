@@ -130,7 +130,7 @@ export class TodoComponent {
       const completedTodos = this.todos.filter(todo => todo.completed);
       this.archivedTodos.push(...completedTodos);
       this.todos = this.todos.filter(todo => !todo.completed);
-  
+
       this.localStorageService.saveData('todos', this.todos);
       this.localStorageService.saveData('arch', this.archivedTodos);
 
