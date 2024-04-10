@@ -12,8 +12,8 @@ import { Todo } from 'src/app/models/todos';
 export class TodoComponent {
 
   todos!: Todo[];
-  isEdit : boolean = false;
-  
+  isEdit: boolean = false;
+
   archivedTodosForInit: Todo[] = [
     {
       content: 'archived first task',
@@ -25,56 +25,56 @@ export class TodoComponent {
     }
   ];
 
-  todosForInit : Todo[]= [
-      {
-        content: 'first task',
-        completed: false
-      },
-      {
-        content: 'second task',
-        completed: true
-      },
-      {
-        content: 'third task',
-        completed: true
-      },
-      {
-        content: 'fourth task',
-        completed: true
-      },
-      {
-        content: 'overflow task',
-        completed: true
-      },
-      {
-        content: 'overflow task',
-        completed: false
-      },
-      {
-        content: 'overflow task',
-        completed: false
-      },
-      {
-        content: 'overflow task',
-        completed: true
-      },
-      {
-        content: 'overflow task',
-        completed: false
-      },
-      {
-        content: 'overflow task',
-        completed: true
-      },
-      {
-        content: 'overflow task',
-        completed: false
-      },
-      {
-        content: 'overflow task',
-        completed: true
-      },
-    ];
+  todosForInit: Todo[] = [
+    {
+      content: 'first task',
+      completed: false
+    },
+    {
+      content: 'second task',
+      completed: true
+    },
+    {
+      content: 'third task',
+      completed: true
+    },
+    {
+      content: 'fourth task',
+      completed: true
+    },
+    {
+      content: 'overflow task',
+      completed: true
+    },
+    {
+      content: 'overflow task',
+      completed: false
+    },
+    {
+      content: 'overflow task',
+      completed: false
+    },
+    {
+      content: 'overflow task',
+      completed: true
+    },
+    {
+      content: 'overflow task',
+      completed: false
+    },
+    {
+      content: 'overflow task',
+      completed: true
+    },
+    {
+      content: 'overflow task',
+      completed: false
+    },
+    {
+      content: 'overflow task',
+      completed: true
+    },
+  ];
   inputTodo: string = "";
   isVisibleEdit: boolean[] = []
 
@@ -88,14 +88,14 @@ export class TodoComponent {
 
   ngOnInit(): void {
     if (!this.localStorageService.getData('todos')) {
-   this.localStorageService.saveData('todos', this.todosForInit);
-    this.localStorageService.saveData('arch', this.archivedTodosForInit);
+      this.localStorageService.saveData('todos', this.todosForInit);
+      this.localStorageService.saveData('arch', this.archivedTodosForInit);
     }
- 
+
     this.todos = this.localStorageService.getData('todos');
     this.archivedTodos = this.localStorageService.getData('arch');
 
-      this.isVisibleEdit = this.todos.map(() => false);
+    this.isVisibleEdit = this.todos.map(() => false);
   }
 
 
@@ -126,23 +126,25 @@ export class TodoComponent {
   }
 
   delFinishedTodos() {
-    this.todos = this.todos.filter(todo => !todo.completed);
-    this.localStorageService.saveData('todos', this.todos);
+    if (this.isEdit == false) {
+      this.todos = this.todos.filter(todo => !todo.completed);
+      this.localStorageService.saveData('todos', this.todos);
+    }
+
   }
 
   archiveTodo(id: number) {
-    if(this.isEdit==false)
-      {
-        const archivedTodo = this.todos[id];
-        this.archivedTodos.push(archivedTodo);
-        this.todos.splice(id, 1);
-    
-        this.localStorageService.saveData('todos', this.todos);
-        this.localStorageService.saveData('arch', this.archivedTodos);
-      }
+    if (this.isEdit == false) {
+      const archivedTodo = this.todos[id];
+      this.archivedTodos.push(archivedTodo);
+      this.todos.splice(id, 1);
+
+      this.localStorageService.saveData('todos', this.todos);
+      this.localStorageService.saveData('arch', this.archivedTodos);
+    }
   }
 
-  routeArchive(){
-    this.router.navigate(['/archive']);  
+  routeArchive() {
+    this.router.navigate(['/archive']);
   }
 }
