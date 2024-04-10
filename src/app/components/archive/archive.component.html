@@ -10,10 +10,7 @@
     </div>
   </div>
 
-  <div
-    *ngFor="let todo of archivedData; let i = index"
-    class="todo {{ todo.completed ? 'done' : '' }}"
-  >
+  <div *ngFor="let todo of archivedData; let i = index" class="todo {{ todo.completed ? 'done' : '' }}">
     <div class="id">
       {{ i + 1 }}
     </div>

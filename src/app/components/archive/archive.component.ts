@@ -13,7 +13,7 @@ export class ArchiveComponent {
   archivedData: Todo[] = [];
   todosData: Todo[] = [];
 
-  constructor(private router: Router, private localStorageService:LocalStorageService) {
+  constructor(private router: Router, private localStorageService: LocalStorageService) {
 
   }
 
@@ -25,15 +25,15 @@ export class ArchiveComponent {
 
   deleteTodo(id: number) {
     this.archivedData = this.archivedData.filter((v, i) => i !== id);
-     this.localStorageService.saveData('arch', this.archivedData);
+    this.localStorageService.saveData('arch', this.archivedData);
   }
   recoverTodo(id: number) {
     const recoveredTodo = this.archivedData[id];
     this.archivedData.splice(id, 1);
     this.todosData.push(recoveredTodo);
-    
-        this.localStorageService.saveData('todos', this.todosData);
-        this.localStorageService.saveData('arch', this.archivedData);
+
+    this.localStorageService.saveData('todos', this.todosData);
+    this.localStorageService.saveData('arch', this.archivedData);
   }
 
   routeTodo() {
