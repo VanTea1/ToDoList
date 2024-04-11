@@ -5,8 +5,27 @@
     font-size: 25px;
 
     .title {
+        position: relative;
         font-family: Georgia, serif;
+        color: #ff7d3c;
+        text-shadow:black 1px 0 1px;
         text-align: center;
+        text-wrap: wrap;
+        text-transform: capitalize;
+        text-transform: uppercase;
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) 2;
+        
+            @keyframes pulse {
+        
+                0%,
+                100% {
+                    opacity: 1;
+                }
+        
+                50% {
+                    opacity: .5;
+                }
+            }
     }
 
 }
